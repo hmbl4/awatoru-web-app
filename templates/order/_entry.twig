@@ -1,24 +1,13 @@
 {% extends "_layout" %}
+
 {% block content %}
 
-{% set products = craft.entries.section('availableProductsList') %}
-
-
-{{entry.title}}
-
-form for ordering etc...
-
-name:
-contact:
-available products to order from:
-***
-
-{% for product in products %}
-
-{{product.availibility}}
-
+{% for entry in entry.availableProducts %}
+    {{entry.available.value}}<br>
+    {{ entry.productName }}<br>
+    {{ entry.price }}<br>
+    <br><br>
 {% endfor %}
 
-***
-submit
+
 {% endblock %}

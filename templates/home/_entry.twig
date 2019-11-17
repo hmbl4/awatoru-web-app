@@ -1,1 +1,16 @@
-{{entry.title}}
+{% extends "_layout" %}
+
+{% block content %}
+
+news!
+
+{% for entry in entry.newsFeed %}
+    {{entry.newsTitle}}<br>
+    {{ entry.newsDescription }}<br>
+    {# {{ entry.image }}<br> #}
+    <br><br>
+{% endfor %}
+
+
+
+{% endblock %}
