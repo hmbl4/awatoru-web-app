@@ -1,1 +1,16 @@
 {{entry.title}}
+
+form for ordering etc...
+
+name:
+contact:
+available products to order from:
+***
+
+{% for product in entry.availableProductsList %}
+{{product.availibility}}
+
+{% endfor %}
+
+***
+submit
