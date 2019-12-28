@@ -1,13 +1,126 @@
 {% extends "_layout" %}
 
 {% block content %}
+{% requireLogin %}
+
+{#
+<form action="https://formspree.io/mayyldgw" method="POST">
+  <input type="text" name="name">
+  <input type="email" name="_replyto">
+  <input type="submit" value="Send">
+</form>
 
 {% for entry in entry.availableProducts %}
     {{entry.available.value}}<br>
     {{ entry.productName }}<br>
     {{ entry.price }}<br>
     <br><br>
-{% endfor %}
+{% endfor %} #}
+
+
+<form method="post" id="form" action="" accept-charset="UTF-8">
+    {{ csrfInput() }}
+    <input type="hidden" name="action" value="contact-form/send">
+    {{ redirectInput('contact/?res=tks') }}
+
+    <h3><label for="from-name">Your Name</label></h3>
+    <input id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}">
+    <p class="error-fromName error error-hidden">Your Name cannot be blank</p>
+
+    <h3><label for="from-email">Your Email</label></h3>
+    <input id="from-email" type="email" name="fromEmail" value="{{ message.fromEmail ?? '' }}">
+    <p class="error-fromEmail error error-hidden">Your Email cannot be blank.</p>
+
+    {# need to test #}
+
+    <h3><label for="available-products">Available Products</label></h3>
+    <input id="available-products" type="hidden" name="fromEmail" value="">
+    <ul>
+        {% for entry in entry.availableProducts %}
+          <input type="checkbox" name="{{ entry.productName }}" value="{{ entry.productName }}"> {{ entry.productName }}<br>
+        {% endfor %}
+    </ul>
+    <p class="error-fromEmail error error-hidden">Your product selection cannot be blank.</p>
+
+
+    {# / need to test #}
+
+
+    <h3><label for="subject">Subject</label></h3>
+    <input id="subject" type="text" name="subject" value="{{ message.subject ?? '' }}">
+    <p class="error-subject error error-hidden">Your Subject cannot be blank</p>
+
+    <h3><label for="message">Message</label></h3>
+    <textarea rows="2" cols="100%" id="message" name="message">{{ message.message ?? '' }}</textarea>
+    <p class="error-message error error-hidden">Your Message cannot be blank</p>
+    <br><br>
+
+    <p class="thanks green">sent successfully! thanks</p>
+
+    <input type="submit" value="Send">
+</form>
+
+<style media="screen">
+  .error{
+    color:red;
+  }
+  .error-hidden{
+    display:none;
+  }
+  .white{
+    color:white;
+  }
+  .thanks{
+    display:none;
+  }
+</style>
+
+
+    <script type="text/javascript">
+
+    $( document ).ready(function() {
+      console.log( "ready!" );
+      $('#form').submit(function(event) {
+          event.preventDefault();
+          console.log("preventDefault!");
+          $('.error').slideUp();
+          $.post({
+              url: '/',
+              dataType: 'json',
+              data: $(this).serialize(),
+              success: function(response) {
+                  console.log(response)
+                  if (response.success) {
+                      console.log("Worked.");
+                      $('.thanks').fadeIn();
+                  } else {
+                      $('.thanks').fadeOut();
+                      console.log("Didn't work.");
+                      $('.error').slideUp();
+                      for (i in response.errors) {
+                        var className = '.error-'+i
+                        console.log(className);
+                        $(className).slideDown();
+                      }
+                  }
+              }
+          });
+        });
+      });
+
+    </script>
+
+
+{# todo #}
+
+{# implement and check i can implement texting with ajax post requests or webhooks. #}
+
+{# upgrade craft to match to download this: #}
+{# https://plugins.craftcms.com/webhooks #}
+
+{# https://zapier.com/apps/twilio/integrations #}
+
+{# https://zapier.com/apps/twilio/integrations/google-sheets #}
 
 
 {% endblock %}

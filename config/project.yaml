@@ -1,0 +1,544 @@
+dateModified: 1575281801
+email:
+  fromEmail: noreply@awatoruwildfood.co.nz
+  fromName: 'Awatoru Wildfood'
+  template: null
+  transportType: putyourlightson\sendgrid\mail\SendgridAdapter
+  transportSettings:
+    apiKey: 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
+fieldGroups:
+  335454c1-7446-4c14-b7af-251dcc1e3a22:
+    name: 'News feed'
+  4b000de0-c332-4c52-806f-0b6adf2a6140:
+    name: Products
+  55709eb1-437b-45bb-94b7-e6328204f455:
+    name: 'Order Form'
+  7a701a6e-72c8-4d5b-ac96-2830c462a6ea:
+    name: Users
+  8ee3bcf1-2ef7-4684-bdc0-ce8ed5a1a3b1:
+    name: Common
+  a3e62c01-c6b9-47f6-9904-6db8c24f0b71:
+    name: News
+fields:
+  050801e0-9914-4a65-a49c-c3418c2da200:
+    name: 'Available Products'
+    handle: availableProducts
+    instructions: ''
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Matrix
+    settings:
+      minBlocks: ''
+      maxBlocks: ''
+      contentTable: '{{%matrixcontent_availableproducts}}'
+      localizeBlocks: false
+    fieldGroup: 55709eb1-437b-45bb-94b7-e6328204f455
+    contentColumnType: string
+  0b3353c6-6585-45e9-9b26-7f8a36124b56:
+    name: 'News Products '
+    handle: newsProducts
+    instructions: ''
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Entries
+    settings:
+      sources:
+        - 'section:5a041f1d-964e-41a5-a3e7-36f0a91ec4e2'
+      source: null
+      targetSiteId: null
+      viewMode: null
+      limit: '6'
+      selectionLabel: 'Add Products'
+      localizeRelations: false
+      validateRelatedElements: ''
+    contentColumnType: string
+    fieldGroup: a3e62c01-c6b9-47f6-9904-6db8c24f0b71
+  23d11b87-2fe8-43aa-bdcd-4bf76b0c0719:
+    name: Email
+    handle: email
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 7a701a6e-72c8-4d5b-ac96-2830c462a6ea
+  5102df7b-e447-4874-9c46-d4cb75c13b7c:
+    name: 'First Name'
+    handle: firstName
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 7a701a6e-72c8-4d5b-ac96-2830c462a6ea
+  631b609a-3a78-4ddb-acae-caf3c6057662:
+    name: 'News Description'
+    handle: newsDescription
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: a3e62c01-c6b9-47f6-9904-6db8c24f0b71
+  737f3d64-426a-45e4-869b-05a5dcf2c242:
+    name: 'News Feed'
+    handle: newsFeed
+    instructions: ''
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Matrix
+    settings:
+      minBlocks: ''
+      maxBlocks: ''
+      contentTable: '{{%matrixcontent_newsfeed}}'
+      localizeBlocks: false
+    fieldGroup: 335454c1-7446-4c14-b7af-251dcc1e3a22
+    contentColumnType: string
+  c4585c4e-f4a6-439c-a95b-1f2a50263b07:
+    name: 'News Title'
+    handle: newsTitle
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: a3e62c01-c6b9-47f6-9904-6db8c24f0b71
+  cfa2e5f0-3a12-438e-9cde-6d040f2cb87a:
+    name: 'Last Name'
+    handle: lastName
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 7a701a6e-72c8-4d5b-ac96-2830c462a6ea
+matrixBlockTypes:
+  14ed5bdb-4241-477f-9e04-f101c7a5d12e:
+    name: News
+    handle: news
+    sortOrder: 1
+    field: 737f3d64-426a-45e4-869b-05a5dcf2c242
+    fieldLayouts:
+      4c73fc9b-af2e-4e6a-bab9-513aa4d634be:
+        tabs:
+          -
+            name: Content
+            sortOrder: 1
+            fields:
+              0279eb13-a8c6-4fbb-854c-f959a7e7ec0c:
+                required: false
+                sortOrder: 2
+              90ec5ac1-0769-4d13-a06e-c7def0978065:
+                required: false
+                sortOrder: 1
+              c3024897-2d66-4ebc-81d2-0fde5834f3e2:
+                required: false
+                sortOrder: 3
+    fields:
+      0279eb13-a8c6-4fbb-854c-f959a7e7ec0c:
+        name: 'News Description'
+        handle: newsDescription
+        instructions: ''
+        searchable: true
+        translationMethod: none
+        translationKeyFormat: null
+        type: craft\fields\PlainText
+        settings:
+          placeholder: ''
+          code: ''
+          multiline: ''
+          initialRows: '4'
+          charLimit: ''
+          columnType: text
+        fieldGroup: null
+        contentColumnType: text
+      90ec5ac1-0769-4d13-a06e-c7def0978065:
+        name: 'News Title'
+        handle: newsTitle
+        instructions: ''
+        searchable: true
+        translationMethod: none
+        translationKeyFormat: null
+        type: craft\fields\PlainText
+        settings:
+          placeholder: ''
+          code: ''
+          multiline: ''
+          initialRows: '4'
+          charLimit: ''
+          columnType: text
+        fieldGroup: null
+        contentColumnType: text
+      c3024897-2d66-4ebc-81d2-0fde5834f3e2:
+        name: Image
+        handle: image
+        instructions: ''
+        searchable: true
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\fields\Assets
+        settings:
+          useSingleFolder: ''
+          defaultUploadLocationSource: null
+          defaultUploadLocationSubpath: ''
+          singleUploadLocationSource: null
+          singleUploadLocationSubpath: ''
+          restrictFiles: ''
+          allowedKinds: null
+          sources: '*'
+          source: null
+          targetSiteId: null
+          viewMode: list
+          limit: ''
+          selectionLabel: ''
+          localizeRelations: false
+        fieldGroup: null
+        contentColumnType: string
+  a91239bf-7096-439b-8ba1-066c475967f0:
+    name: Products
+    handle: products
+    sortOrder: 1
+    field: 050801e0-9914-4a65-a49c-c3418c2da200
+    fieldLayouts:
+      9ffa248a-8c2d-445c-8841-f9c32332c923:
+        tabs:
+          -
+            name: Content
+            sortOrder: 1
+            fields:
+              1a093554-c08f-40f7-b0b7-d691befee085:
+                required: false
+                sortOrder: 2
+              611dcf48-d3df-4e35-bef6-ed0253894db5:
+                required: false
+                sortOrder: 1
+              9e62a5a5-7e6d-4e9c-8dda-f19f38b75cf1:
+                required: false
+                sortOrder: 4
+              e59be861-cc06-4f7d-8419-a990bddd30fd:
+                required: false
+                sortOrder: 3
+    fields:
+      1a093554-c08f-40f7-b0b7-d691befee085:
+        name: Price
+        handle: price
+        instructions: ''
+        searchable: true
+        translationMethod: none
+        translationKeyFormat: null
+        type: craft\fields\PlainText
+        settings:
+          placeholder: ''
+          code: ''
+          multiline: ''
+          initialRows: '4'
+          charLimit: ''
+          columnType: text
+        fieldGroup: null
+        contentColumnType: text
+      611dcf48-d3df-4e35-bef6-ed0253894db5:
+        name: 'Product Name'
+        handle: productName
+        instructions: ''
+        searchable: true
+        translationMethod: none
+        translationKeyFormat: null
+        type: craft\fields\PlainText
+        settings:
+          placeholder: ''
+          code: ''
+          multiline: ''
+          initialRows: '4'
+          charLimit: ''
+          columnType: text
+        fieldGroup: null
+        contentColumnType: text
+      9e62a5a5-7e6d-4e9c-8dda-f19f38b75cf1:
+        name: 'Available?'
+        handle: available
+        instructions: ''
+        searchable: true
+        translationMethod: none
+        translationKeyFormat: null
+        type: craft\fields\Dropdown
+        settings:
+          options:
+            -
+              label: Available
+              value: available
+              default: '1'
+            -
+              label: Unavailable
+              value: unavailable
+              default: ''
+        fieldGroup: null
+        contentColumnType: string
+      e59be861-cc06-4f7d-8419-a990bddd30fd:
+        name: Image
+        handle: image
+        instructions: ''
+        searchable: true
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\fields\Assets
+        settings:
+          useSingleFolder: ''
+          defaultUploadLocationSource: null
+          defaultUploadLocationSubpath: ''
+          singleUploadLocationSource: null
+          singleUploadLocationSubpath: ''
+          restrictFiles: ''
+          allowedKinds: null
+          sources: '*'
+          source: null
+          targetSiteId: null
+          viewMode: list
+          limit: ''
+          selectionLabel: ''
+          localizeRelations: false
+        fieldGroup: null
+        contentColumnType: string
+plugins:
+  webhooks:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.2.0
+  contact-form:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      toEmail: h.lawrence@windowslive.com
+      prependSender: 'On behalf of'
+      prependSubject: 'New message from Awatoru'
+      allowAttachments: ''
+      successFlashMessage: 'Your message has been sent.'
+  sendgrid:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+sections:
+  5a041f1d-964e-41a5-a3e7-36f0a91ec4e2:
+    name: Products
+    handle: products
+    type: channel
+    enableVersioning: true
+    entryTypes:
+      3c5453b2-9842-4725-9430-cf7723a09c1f:
+        name: Products
+        handle: products
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: null
+        sortOrder: 1
+    siteSettings:
+      1d897520-a9e2-4981-beda-4254507df91e:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: 'products/{slug}'
+        template: products/_entry
+    propagationMethod: all
+  799c5f9f-5fc4-44eb-9ab5-6b5b70a2fd4d:
+    name: Home
+    handle: home
+    type: single
+    enableVersioning: true
+    entryTypes:
+      1efb8a72-3c56-462d-9a85-0c686962f8cb:
+        name: Home
+        handle: home
+        hasTitleField: false
+        titleLabel: null
+        titleFormat: '{section.name|raw}'
+        sortOrder: 1
+        fieldLayouts:
+          989b76e3-f78d-46ba-a27c-f012bff692fb:
+            tabs:
+              -
+                name: 'Tab 1'
+                sortOrder: 1
+                fields:
+                  737f3d64-426a-45e4-869b-05a5dcf2c242:
+                    required: false
+                    sortOrder: 1
+    siteSettings:
+      1d897520-a9e2-4981-beda-4254507df91e:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: __home__
+        template: home/_entry
+    propagationMethod: all
+  a8cbca0d-d8d9-4dfd-bc56-39396f122ab0:
+    name: Contact
+    handle: contact
+    type: single
+    enableVersioning: true
+    entryTypes:
+      819facc5-de6d-46f5-bb81-bb1982b4b5e8:
+        name: Contact
+        handle: contact
+        hasTitleField: false
+        titleLabel: null
+        titleFormat: '{section.name|raw}'
+        sortOrder: 1
+    siteSettings:
+      1d897520-a9e2-4981-beda-4254507df91e:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: contact
+        template: contact/_entry
+    propagationMethod: all
+  ab35d417-427e-443b-b529-21866d37ba58:
+    name: 'Order Form'
+    handle: orderForm
+    type: single
+    enableVersioning: true
+    entryTypes:
+      65959724-a677-4bbf-b3c5-7053f5fdd9e9:
+        name: 'Order Form'
+        handle: orderForm
+        hasTitleField: false
+        titleLabel: null
+        titleFormat: '{section.name|raw}'
+        sortOrder: 1
+        fieldLayouts:
+          001227e4-823c-493a-b92f-a6c42dfb0562:
+            tabs:
+              -
+                name: 'Tab 1'
+                sortOrder: 1
+                fields:
+                  050801e0-9914-4a65-a49c-c3418c2da200:
+                    required: false
+                    sortOrder: 1
+    siteSettings:
+      1d897520-a9e2-4981-beda-4254507df91e:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: order
+        template: order/_entry
+    propagationMethod: all
+  fbeaeb48-e4f3-44bb-b933-90a97eff2358:
+    name: News
+    handle: news
+    type: channel
+    enableVersioning: true
+    propagationMethod: all
+    siteSettings:
+      1d897520-a9e2-4981-beda-4254507df91e:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: 'news/{slug}'
+        template: news/_entry
+    entryTypes:
+      a39dd88a-bcfb-456b-a070-327b5b514111:
+        name: News
+        handle: news
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
+        fieldLayouts:
+          8b4a0618-795f-442f-acab-4c299884450d:
+            tabs:
+              -
+                name: News
+                sortOrder: 1
+                fields:
+                  0b3353c6-6585-45e9-9b26-7f8a36124b56:
+                    required: false
+                    sortOrder: 2
+                  631b609a-3a78-4ddb-acae-caf3c6057662:
+                    required: false
+                    sortOrder: 1
+                  c4585c4e-f4a6-439c-a95b-1f2a50263b07:
+                    required: false
+                    sortOrder: 3
+siteGroups:
+  c9424660-0760-48b0-b613-2c3499cf4ff8:
+    name: 'Craft3 Jir6 Frb - Awatoru'
+sites:
+  1d897520-a9e2-4981-beda-4254507df91e:
+    siteGroup: c9424660-0760-48b0-b613-2c3499cf4ff8
+    name: 'Awatoru Application'
+    handle: default
+    language: en-NZ
+    hasUrls: true
+    baseUrl: '@web/'
+    sortOrder: 1
+    primary: true
+system:
+  edition: pro
+  live: true
+  name: 'Craft3 Jir6 Frb - Awatoru'
+  timeZone: America/Los_Angeles
+  schemaVersion: 3.3.3
+users:
+  requireEmailVerification: true
+  allowPublicRegistration: true
+  defaultGroup: 2bc2f604-a7fc-4567-b7db-bed1568be1c3
+  photoVolumeUid: null
+  photoSubpath: null
+  fieldLayouts:
+    ac1b6471-20fc-4144-bd87-acdae5219a90:
+      tabs:
+        -
+          name: Users
+          sortOrder: 1
+          fields:
+            23d11b87-2fe8-43aa-bdcd-4bf76b0c0719:
+              required: false
+              sortOrder: 1
+            5102df7b-e447-4874-9c46-d4cb75c13b7c:
+              required: false
+              sortOrder: 2
+            cfa2e5f0-3a12-438e-9cde-6d040f2cb87a:
+              required: false
+              sortOrder: 3
+  groups:
+    2bc2f604-a7fc-4567-b7db-bed1568be1c3:
+      name: 'Restaurants '
+      handle: restaurants

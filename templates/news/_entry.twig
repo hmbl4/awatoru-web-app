@@ -1,0 +1,80 @@
+{% extends "_layout" %}
+
+{% block content %}
+{% requireLogin %}
+
+
+{# admin things!
+
+API_key ="only rendered by admins"
+
+automatically appends the url at the end of the text message. #}
+
+{# <form class="" id="form">
+  <input id="" type="hidden" name="url" value="{{entry.url}}">
+  <textarea id="text_message" name="message" rows="3" cols="40"></textarea>
+  <input id="" type="submit" name="" value="Submit">
+</form> #}
+
+{# javascript:
+  jquery:
+    ajax post request that triggers the form:
+    send data to twilio
+    sends a series of texts out
+    or alternate platform? #}
+
+{# https://www.twilio.com/docs/sms/send-messages#send-an-sms-with-twilios-api #}
+
+  {# <script type="text/javascript">
+
+    $(document).ready(function() {
+      $("#form").submit(function(event) {
+        event.preventDefault();
+        var form = new FormData();
+        form.append("Body", $('#text_message').val());
+        form.append("From", "+64273504253");
+        form.append("To", "+64273504253");
+        var settings = {
+          "url": "https://api.twilio.com/2010-04-01/Accounts/ACccfa0aa2e0b241a249f0991496399173/Messages.json",
+          "method": "POST",
+          "headers": {
+            "Authorization": "Basic ACccfa0aa2e0b241a249f0991496399173:12cf2f58c6336a5f4b1c7bacae1039ef",
+            "Accept": "*/*",
+          },
+          "processData": false,
+          "contentType": false,
+          "mimeType": "multipart/form-data",
+          "data": form,
+          "Access-Control-Request-Headers":"append,delete,entries,foreach,get,has,keys,set,values",
+          "Access-Control-Request-Method":"POST",
+          'Access-Control-Allow-Headers':'authorization',
+          'Access-Control-Allow-Headers':'content-type'
+        }
+
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+        });
+      });
+    });
+
+    </script> #}
+
+
+
+
+
+{# buy a number australian #}
+{# run past maaike using australian number. #}
+{# prove my address #}
+
+
+
+news entry!<br><br>
+
+{{entry.title}}<br>
+{{entry.newsDescription}}<br>
+{{entry.newsTitle}}<br>
+
+
+
+{% endblock %}
