@@ -12,22 +12,25 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    {# <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
     <style media="screen">
       * {
         font-family: 'Lato', sans-serif;
       }
-    </style>
-    <title>Hello, world!</title>
+    </style> #}
+    <title>Awatoru Wildfood Provedores</title>
+    {# Awatoru (Three Rivers) is an Artisan Fishing and Wild Food supply company, a small family business based at the Kapiti Coast supplying the Hospitality and Restaurant trade. #}
+
+
   </head>
   <body>
-    <div class="container">
-    {% block content %}
 
+    {% include '_header.twig' %}
 
-    {% endblock %}
-    </div>
+    {% block content %}   {% endblock %}
+
+    {% include '_footer.twig' %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
