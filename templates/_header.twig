@@ -28,7 +28,7 @@
 NAV<BR><BR>
 {% for entry in craft.entries.section('navigationMenu') %}
     <div>
-        {{ entry.navigationItemLink }}<br><br>
+        {{ entry.navigationItemLink.url }}<br><br>
         {{ entry.navigationItemName }}<br><br>
         {{ entry.url }}<br><br>
     </div>
