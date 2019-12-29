@@ -24,6 +24,18 @@
   <li><a href="badges.html">Components</a></li>
   <li><a href="collapsible.html">JavaScript</a></li>
 </ul>
+<BR><BR>
+NAV<BR><BR>
+{% for entry in craft.entries.section('navigationMenu') %}
+    <div>
+        {{ entry.navigationItemLink }}<br><br>
+        {{ entry.navigationItemName }}<br><br>
+        {{ entry.url }}<br><br>
+    </div>
+{% endfor %}
+
+
+
 {#
 <div id="test1" class="col s12">Test 1</div>
 <div id="test2" class="col s12">Test 2</div>
