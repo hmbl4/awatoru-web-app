@@ -1,11 +1,11 @@
-dateModified: 1575281801
+dateModified: 1577670210
 email:
-  fromEmail: noreply@awatoruwildfood.co.nz
+  fromEmail: h.lawrence@windowslive.com
   fromName: 'Awatoru Wildfood'
-  template: null
+  template: ''
   transportType: putyourlightson\sendgrid\mail\SendgridAdapter
   transportSettings:
-    apiKey: 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
+    apiKey: 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
 fieldGroups:
   335454c1-7446-4c14-b7af-251dcc1e3a22:
     name: 'News feed'
@@ -13,6 +13,8 @@ fieldGroups:
     name: Products
   55709eb1-437b-45bb-94b7-e6328204f455:
     name: 'Order Form'
+  70f64b48-8b55-4750-bca7-5656ba7dbda4:
+    name: Navigation
   7a701a6e-72c8-4d5b-ac96-2830c462a6ea:
     name: Users
   8ee3bcf1-2ef7-4684-bdc0-ce8ed5a1a3b1:
@@ -72,6 +74,23 @@ fields:
       columnType: text
     contentColumnType: text
     fieldGroup: 7a701a6e-72c8-4d5b-ac96-2830c462a6ea
+  39df27ca-5b1d-47b2-bd31-38bff959da95:
+    name: 'Product Description'
+    handle: productDescription
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 4b000de0-c332-4c52-806f-0b6adf2a6140
   5102df7b-e447-4874-9c46-d4cb75c13b7c:
     name: 'First Name'
     handle: firstName
@@ -106,6 +125,23 @@ fields:
       columnType: text
     contentColumnType: text
     fieldGroup: a3e62c01-c6b9-47f6-9904-6db8c24f0b71
+  70251911-52b7-456d-91f2-fc34766531e5:
+    name: 'Navigation Item Name'
+    handle: navigationItemName
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 70f64b48-8b55-4750-bca7-5656ba7dbda4
   737f3d64-426a-45e4-869b-05a5dcf2c242:
     name: 'News Feed'
     handle: newsFeed
@@ -121,6 +157,42 @@ fields:
       localizeBlocks: false
     fieldGroup: 335454c1-7446-4c14-b7af-251dcc1e3a22
     contentColumnType: string
+  9d16c20b-3195-47af-9d60-d138e02b7bd9:
+    name: 'Navigation Item Link'
+    handle: navigationItemLink
+    instructions: ''
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Entries
+    settings:
+      sources: '*'
+      source: null
+      targetSiteId: null
+      viewMode: null
+      limit: '1'
+      selectionLabel: ''
+      localizeRelations: false
+      validateRelatedElements: ''
+    contentColumnType: string
+    fieldGroup: 70f64b48-8b55-4750-bca7-5656ba7dbda4
+  b7323f15-0b6c-493e-8174-d85f69a61edd:
+    name: 'Product Name'
+    handle: productName
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 4b000de0-c332-4c52-806f-0b6adf2a6140
   c4585c4e-f4a6-439c-a95b-1f2a50263b07:
     name: 'News Title'
     handle: newsTitle
@@ -155,6 +227,32 @@ fields:
       columnType: text
     contentColumnType: text
     fieldGroup: 7a701a6e-72c8-4d5b-ac96-2830c462a6ea
+  dc21e978-d52e-49fd-8089-5d3c46a77d69:
+    name: 'Product Image'
+    handle: productImage
+    instructions: ''
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Assets
+    settings:
+      useSingleFolder: ''
+      defaultUploadLocationSource: ''
+      defaultUploadLocationSubpath: ''
+      singleUploadLocationSource: ''
+      singleUploadLocationSubpath: ''
+      restrictFiles: ''
+      allowedKinds: null
+      sources: '*'
+      source: null
+      targetSiteId: null
+      viewMode: large
+      limit: '1'
+      selectionLabel: ''
+      localizeRelations: false
+      validateRelatedElements: ''
+    contentColumnType: string
+    fieldGroup: 4b000de0-c332-4c52-806f-0b6adf2a6140
 matrixBlockTypes:
   14ed5bdb-4241-477f-9e04-f101c7a5d12e:
     name: News
@@ -372,8 +470,24 @@ sections:
         handle: products
         hasTitleField: true
         titleLabel: Title
-        titleFormat: null
+        titleFormat: ''
         sortOrder: 1
+        fieldLayouts:
+          4006694c-80aa-4971-bb0c-6c2fdd520eb9:
+            tabs:
+              -
+                name: Products
+                sortOrder: 1
+                fields:
+                  39df27ca-5b1d-47b2-bd31-38bff959da95:
+                    required: false
+                    sortOrder: 1
+                  b7323f15-0b6c-493e-8174-d85f69a61edd:
+                    required: false
+                    sortOrder: 3
+                  dc21e978-d52e-49fd-8089-5d3c46a77d69:
+                    required: false
+                    sortOrder: 2
     siteSettings:
       1d897520-a9e2-4981-beda-4254507df91e:
         enabledByDefault: true
@@ -461,6 +575,39 @@ sections:
         uriFormat: order
         template: order/_entry
     propagationMethod: all
+  cecda293-6e2b-44f3-a22d-0c49bdaf2a86:
+    name: 'Navigation Menu'
+    handle: navigationMenu
+    type: channel
+    enableVersioning: true
+    propagationMethod: all
+    siteSettings:
+      1d897520-a9e2-4981-beda-4254507df91e:
+        enabledByDefault: true
+        hasUrls: false
+        uriFormat: ''
+        template: null
+    entryTypes:
+      1055eb79-56f9-41b3-b477-33365fac6983:
+        name: 'Navigation Menu'
+        handle: navigationMenu
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
+        fieldLayouts:
+          d2bf81e4-2cf3-4bb7-948b-b857c0d11270:
+            tabs:
+              -
+                name: Navigation
+                sortOrder: 1
+                fields:
+                  70251911-52b7-456d-91f2-fc34766531e5:
+                    required: false
+                    sortOrder: 2
+                  9d16c20b-3195-47af-9d60-d138e02b7bd9:
+                    required: false
+                    sortOrder: 1
   fbeaeb48-e4f3-44bb-b933-90a97eff2358:
     name: News
     handle: news
@@ -503,7 +650,7 @@ siteGroups:
 sites:
   1d897520-a9e2-4981-beda-4254507df91e:
     siteGroup: c9424660-0760-48b0-b613-2c3499cf4ff8
-    name: 'Awatoru Application'
+    name: 'Awatoru App'
     handle: default
     language: en-NZ
     hasUrls: true

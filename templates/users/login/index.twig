@@ -1,24 +1,41 @@
-<form method="post" accept-charset="UTF-8">
-    {{ csrfInput() }}
-    {{ actionInput('users/login') }}
+{% extends "_layout" %}
 
-    <h3><label for="loginName">Username or email</label></h3>
-    <input id="loginName" type="text" name="loginName"
-        value="{{ craft.app.user.rememberedUsername }}">
+{% block content %}
+<div class="row py-5">
+  <div class="col-md-12">
+    <h1>Title</h1>
+    <p>Description.</p>
+  </div>
+</div>
 
-    <h3><label for="password">Password</label></h3>
-    <input id="password" type="password" name="password">
+<div class="row">
+  <div class="col s6">
+    <form method="post" accept-charset="UTF-8">
+        {{ csrfInput() }}
+        {{ actionInput('users/login') }}
 
-    <label>
-        <input type="checkbox" name="rememberMe" value="1">
-        Remember me
-    </label>
+        <h3><label for="loginName">Username or email</label></h3>
+        <input id="loginName" type="text" name="loginName"
+            value="{{ craft.app.user.rememberedUsername }}">
 
-    <input type="submit" value="Login">
+        <h3><label for="password">Password</label></h3>
+        <input id="password" type="password" name="password">
 
-    {% if errorMessage is defined %}
-        <p>{{ errorMessage }}</p>
-    {% endif %}
-</form>
+        <label>
+            <input type="checkbox" name="rememberMe" value="1">
+            Remember me
+        </label>
 
-<p><a href="{{ url('users/forgotpassword') }}">Forget your password?</a></p>
+        <input type="submit" value="Login">
+
+        {% if errorMessage is defined %}
+            <p>{{ errorMessage }}</p>
+        {% endif %}
+    </form>
+
+    <p><a href="{{ url('users/forgotpassword') }}">Forget your password?</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

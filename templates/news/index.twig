@@ -1,12 +1,18 @@
-
+{% extends "_layout" %}
 {% requireLogin %}
 
+{% block content %}
+<div class="row py-5">
+  <div class="col-md-12">
+    <h1>Title</h1>
+    <p>Description.</p>
+  </div>
+</div>
 news main page here
 THEN
 -> individual post with contact button on each -> CONTACT leads to emails
 -> contact and text chefs section for admins
 
-<div class="container">
   <div class="row">
     <div class="col s12 m6">
 
@@ -59,7 +65,6 @@ THEN
       </div>
      </div>
        <div class="col s12 m6">
-
          <div class="card">
            <div class="card-image waves-effect waves-block waves-light">
              <img class="activator" src="images/office.jpg">
@@ -75,4 +80,5 @@ THEN
          </div>
       </div>
  </div>
-</div>
+
+{% endblock %}

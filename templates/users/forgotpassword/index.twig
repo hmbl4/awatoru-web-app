@@ -1,19 +1,36 @@
-<form method="post" accept-charset="UTF-8">
-    {{ csrfInput() }}
-    {{ actionInput('users/send-password-reset-email') }}
-    {{ redirectInput('') }}
+{% extends "_layout" %}
 
-    <h3><label for="loginName">Username or email</label></h3>
-    <input id="loginName" type="text" name="loginName"
-        value="{% if loginName is defined %}{{ loginName }}{% else %}{{ craft.app.user.rememberedUsername }}{% endif %}">
+{% block content %}
+<div class="row py-5">
+  <div class="col-md-12">
+    <h1>Title</h1>
+    <p>Description.</p>
+  </div>
+</div>
 
-    {% if errors is defined %}
-        <ul class="errors">
-            {% for error in errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+<div class="row">
+  <div class="col s6">
+    <form method="post" accept-charset="UTF-8">
+        {{ csrfInput() }}
+        {{ actionInput('users/send-password-reset-email') }}
+        {{ redirectInput('') }}
 
-    <input type="submit" value="Submit">
-</form>
+        <h3><label for="loginName">Username or email</label></h3>
+        <input id="loginName" type="text" name="loginName"
+            value="{% if loginName is defined %}{{ loginName }}{% else %}{{ craft.app.user.rememberedUsername }}{% endif %}">
+
+        {% if errors is defined %}
+            <ul class="errors">
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <input type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

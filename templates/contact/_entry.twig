@@ -1,32 +1,17 @@
 {% extends "_layout" %}
 
 {% block content %}
-
-{{entry.title}}
-
-<br><br>
-
-REMEMBER, MAKE a thanks page and add this panel in there saying thanks, with an animation maybe:
-
-<div class="row">
-  <div class="col s12 m5">
-    <div class="card-panel teal">
-      <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-      I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-      </span>
-    </div>
+<div class="row py-5">
+  <div class="col-md-12">
+    <h1>Title</h1>
+    <p>Description.</p>
   </div>
 </div>
 
-
-CSS
-
-
-<div class="row">
-   <form class="col s12">
+   <!-- <form>
      <div class="row">
        <div class="input-field col s6">
-         <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+         <input id="first_name" type="text" class="validate">
          <label for="first_name">First Name</label>
        </div>
        <div class="input-field col s6">
@@ -34,12 +19,12 @@ CSS
          <label for="last_name">Last Name</label>
        </div>
      </div>
-     <div class="row">
+     {# <div class="row">
        <div class="input-field col s12">
          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
          <label for="disabled">Disabled</label>
        </div>
-     </div>
+     </div> #}
      <div class="row">
        <div class="input-field col s12">
          <input id="password" type="password" class="validate">
@@ -52,7 +37,7 @@ CSS
          <label for="email">Email</label>
        </div>
      </div>
-     <div class="row">
+     {# <div class="row">
        <div class="col s12">
          This is an inline input field:
          <div class="input-field inline">
@@ -61,13 +46,8 @@ CSS
            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
          </div>
        </div>
-     </div>
-   </form>
- </div>
-
-
-
-DATA
+     </div> #}
+   </form> -->
 
 
 
@@ -75,28 +55,40 @@ DATA
     {{ csrfInput() }}
     <input type="hidden" name="action" value="contact-form/send">
     {{ redirectInput('contact/?res=tks') }}
+    <div class="row">
+      <div class="col-md-6">
+        <label for="from-name">Your Name</label>
+        <input id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}">
+        <p class="error-fromName error error-hidden">Your Name cannot be blank</p>
+      </div>
 
-    <h3><label for="from-name">Your Name</label></h3>
-    <input id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}">
-    <p class="error-fromName error error-hidden">Your Name cannot be blank</p>
+      <div class="col-md-6">
+        <label for="from-email">Your Email</label>
+        <input id="from-email" type="email" name="fromEmail" value="{{ message.fromEmail ?? '' }}">
+        <p class="error-fromEmail error error-hidden">Your Email cannot be blank.</p>
+      </div>
 
-    <h3><label for="from-email">Your Email</label></h3>
-    <input id="from-email" type="email" name="fromEmail" value="{{ message.fromEmail ?? '' }}">
-    <p class="error-fromEmail error error-hidden">Your Email cannot be blank.</p>
 
-    {# <h3><label for="subject">Subject</label></h3> #}
-    <input id="subject" type="hidden" name="subject" value="{{entry.title}}">
-    {# <p class="error-subject error error-hidden">Your Subject cannot be blank</p> #}
+      <div class="col-md-6">
+        <textarea placeholder="Your message here..."rows="2" cols="100%" id="message" name="message" style="padding-left:.5rem;padding-top:.5rem">{{ message.message ?? '' }}</textarea>
+        <p class="error-message error error-hidden">Your Message cannot be blank</p>
+      </div>
+    </div>
 
-    <h3><label for="message">Message</label></h3>
-    <textarea rows="2" cols="100%" id="message" name="message">{{ message.message ?? '' }}</textarea>
-    <p class="error-message error error-hidden">Your Message cannot be blank</p>
-    <br><br>
+    <input id="subject" type="hidden" name="subject" value="Query from {{entry.title}}">
+    {# <p class="thanks green">sent successfully! thanks</p> #}
 
-    <p class="thanks green">sent successfully! thanks</p>
+    <div class="card-panel teal thanks">
+      <span class="white-text">Thanks! We've received your message, we'll get back to you as soon as possible.</span>
+    </div>
 
-    <input type="submit" value="Send">
+    {#<input type="submit" class="" value="Send"> #}
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+       <i class="material-icons right">send</i>
+    </button>
 </form>
+
 
 <style media="screen">
   .error{

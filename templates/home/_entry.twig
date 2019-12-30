@@ -1,44 +1,18 @@
 {% extends "_layout" %}
+
 {% block content %}
-{% if craft.session.isLoggedIn %}
-       <a href="{{ logoutUrl }}">Logout</a>
-{% endif %}
+<div class="row py-5">
+  <div class="col-md-12">
+    <h1>Title</h1>
+    <p>Description.</p>
+  </div>
+</div>
 
-<br><br>
-  {{currentUser}}<br><br>
-<a href="{{ url(siteUrl('admin'), '', 'http') }}">
-{{ url(siteUrl('admin'), '', 'http') }}<br>
-</a>
-
-<a href="{{ url(siteUrl('contact'), '', 'http') }}">
-Contact<br>
-</a>
-
-<a href="{{ url(siteUrl(), '', 'http') }}">
-Home<br>
-</a>
-
-<a href="{{ url(siteUrl('order'), '', 'http') }}">
-Order<br>
-</a>
-
-
-news!
-
-{% if devMode %}
-    Craft is running in dev mode.
-{% endif %}
-<br><br>
-{{siteUrl()}}<br>
-
-{{ url('http://my-project.com', 'foo=1', 'https') }}<br>
 
 {% for entry in entry.newsFeed %}
     {{entry.newsTitle}}<br>
     {{ entry.newsDescription }}<br>
     <br><br>
 {% endfor %}
-
-
 
 {% endblock %}

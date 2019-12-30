@@ -1,4 +1,13 @@
-{# {% requireLogin %} #}
+{% extends "_layout" %}
+
+{% block content %}
+<div class="row py-5">
+  <div class="col-md-12">
+    <h1>Title</h1>
+    <p>Description.</p>
+  </div>
+</div>
+
 <form method="post" accept-charset="UTF-8">
     {{ csrfInput() }}
     {{ actionInput('users/set-password') }}
@@ -17,3 +26,5 @@
 
     <input type="submit" value="Submit">
 </form>
+
+{% endblock %}

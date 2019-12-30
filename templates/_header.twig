@@ -1,43 +1,59 @@
+{% set nav = craft.entries.section('navigationMenu') %}
 
-<nav class="nav-extended">
+{# <nav class="nav-extended">
+<div class="container">
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Logo</a>
+    <a href="{{siteUrl}}" class="brand-logo">
+      <img src="https://static1.squarespace.com/static/58a123c546c3c41632032fa9/t/58b362753a04111160da47d0/1559182814063/?format=300w" style="max-height:3rem;"alt="">
+    </a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <li><a href="collapsible.html">JavaScript</a></li>
+    {% for item in nav %}
+      <li><a href="{{ item.navigationItemLink.first().url }}">{{ item.navigationItemName }}</a></li>
+    {% endfor %}
+    {% if currentUser %}
+    <li><a href="{{ siteUrl('admin') }}">{{currentUser}}</a></li>
+    <li><a href="{{ siteUrl('logout') }}">Logout</a></li>
+    {% else %}
+      <li><a href="{{ siteUrl('users/login') }}">Login</a></li>
+    {% endif %}
     </ul>
-  </div>
-  <div class="nav-content">
-    <ul class="tabs tabs-transparent">
-      <li class="tab"><a href="#test1">Test 1</a></li>
-      <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-      {# <li class="tab disabled"><a href="#test3">Disabled Tab</a></li> #}
-      <li class="tab"><a href="#test4">Test 4</a></li>
-    </ul>
+    </div>
   </div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-  <li><a href="sass.html">Sass</a></li>
-  <li><a href="badges.html">Components</a></li>
-  <li><a href="collapsible.html">JavaScript</a></li>
-</ul>
-<BR><BR>
-NAV<BR><BR>
-{% for entry in craft.entries.section('navigationMenu') %}
-    <div>
-        {{ entry.navigationItemLink.url }}<br><br>
-        {{ entry.navigationItemName }}<br><br>
-        {{ entry.url }}<br><br>
-    </div>
-{% endfor %}
+  {% for item in nav %}
+    <li><a href="{{ item.navigationItemLink.first().url }}">{{ item.navigationItemName }}</a></li>
+  {% endfor %}
+  {% if craft.session.isLoggedIn %}
+    <li><a href="{{ siteUrl('admin') }}">{{currentUser}}</a></li>
+    <li><a href="{{ siteUrl('logout') }}">Logout</a></li>
+  {% else %}
+    <li><a href="{{ siteUrl('users/login') }}">Login</a></li>
+  {% endif %}
+</ul> #}
 
-
-
-{#
-<div id="test1" class="col s12">Test 1</div>
-<div id="test2" class="col s12">Test 2</div>
-<div id="test3" class="col s12">Test 3</div>
-<div id="test4" class="col s12">Test 4</div> #}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a href="{{siteUrl}}" class="navbar-brand">
+    <img src="https://static1.squarespace.com/static/58a123c546c3c41632032fa9/t/58b362753a04111160da47d0/1559182814063/?format=300w" style="max-height:3rem;"alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav" style="margin-left: auto;">
+    {% for item in nav %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ item.navigationItemLink.first().url }}">{{ item.navigationItemName }}</a>
+      </li>
+    {% endfor %}
+    {% if currentUser %}
+    <li class="nav-item"><a class="nav-link text-white" href="{{ siteUrl('admin') }}">{{currentUser}}</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="{{ siteUrl('logout') }}">Logout</a></li>
+    {% else %}
+    <li class="nav-item"><a class="nav-link text-white" href="{{ siteUrl('users/login') }}">Login</a></li>
+    {% endif %}
+    </ul>
+  </div>
+</nav>

@@ -1,1 +1,12 @@
-foot
+{% set nav = craft.entries.section('navigationMenu') %}
+
+    <footer class="container">
+      <p class="float-right"><a href="#">Back to top</a></p>
+      <p>&copy; {{"now"|date('Y')}} Awatoru Wildfood      </p>
+      <div class="d-flex justify-content-center">
+        {# {% for item in nav %}
+         <a class="grey-text text-lighten-3 btn btn-dark mr-2" href="{{ item.navigationItemLink.first().url }}">{{ item.navigationItemName }}</a>
+        {% endfor %} #}
+        </div>
+
+    </footer>
