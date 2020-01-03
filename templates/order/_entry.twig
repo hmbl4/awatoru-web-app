@@ -3,6 +3,7 @@
 {% requireLogin %}
 
 {% block content %}
+{% set products = craft.entries.section('products') %}
 
 
 {% include '_snippets/header-block' with
@@ -15,18 +16,23 @@
 {# <form action="https://formspree.io/mayyldgw" method="POST">
   <input type="text" placeholder="text" name="name">
   <input type="email" placeholder="email" name="_replyto">
+  <label for="available-products">Products:</label>
+  <input id="products-requested" type="hidden" name="products" value="">
+
+  <ul>
+    {% for product in products %}
+      <li style="list-style-type: none;margin-left:-1rem;">
+        <input type="checkbox" name="product-check-{{loop.index}}" class="product-checkbox" data-val="{{ product.productName }}">
+        <label for="product-check-{{loop.index}}" class="feed__box__product__outer--name mt-0">{{ product.productName }}</label>
+      </li>
+    {% endfor %}
+  </ul>
+  <p class="error-fromEmail error error-hidden">Your product selection cannot be blank.</p>
+
   <input type="submit" value="Send">
 </form> #}
 
 
-{% set products = craft.entries.section('products') %}
-
-{# {% for product in products %}
-
-    {{ product.productName }}<br>
-    {{ product.productDescription }}<br>
-
-{% endfor %} #}
 
 {# maybe add an option here for a product they'd like to request, like an other option #}
 
@@ -54,26 +60,29 @@
       <div class="col-md-12">
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea rows="2" cols="100%" class="form-control" id="message" name="message">{{ message.message ?? '' }}</textarea>
+          <textarea rows="2" cols="100%"  class="form-control" id="message" name="message">{{ message.message ?? '' }}</textarea>
           <p class="error-message error error-hidden">Your Message cannot be blank</p>
         </div>
       </div>
     </div>
 
-    <label for="available-products">Products:</label>
-    <input id="available-products" type="hidden" name="products" value="">
-    <ul>
-        {% for product in products %}
-        <div class="">
-            <input type="checkbox" name="{{ product.productName }}" value="{{ product.productName }}"> {{ entry.productName }}
-            <label for="{{ product.productName }}">{{ product.productName }}</label>
-            </div>
+    <input id="form-type" type="hidden" name="OrderForm" value="Order Form">
 
-        {% endfor %}
+
+    <label for="available-products">Products:</label>
+    <input id="products-requested" type="hidden" name="products" value="">
+
+    <ul>
+      {% for product in products %}
+        <li style="list-style-type: none;margin-left:-1rem;">
+          <input type="checkbox" name="product-check-{{loop.index}}" class="product-checkbox" data-val="{{ product.productName }}">
+          <label for="product-check-{{loop.index}}" class="feed__box__product__outer--name mt-0">{{ product.productName }}</label>
+        </li>
+      {% endfor %}
     </ul>
     <p class="error-fromEmail error error-hidden">Your product selection cannot be blank.</p>
 
-    <p class="thanks green">Sent successfully! thanks</p>
+    <div class="alert alert-success thanks" role="alert">Sent successfully! We will be in touch, thanks.</div>
 
     <input type="submit" class="btn btn-purchase" value="Order Now">
 </form>
@@ -106,10 +115,27 @@
                         $(className).slideDown();
                       }
                   }
+              },
+              failure: function(result){
+                  console.log("FAILED");
+                  console.log(result);
               }
           });
         });
+
+        // console.log( "ready!" );
+        $(".product-checkbox").on('change',function(event){
+          var productList = []
+          $(".product-checkbox").each(function(){
+            if ($(this).is(':checked') ) {
+              productList.push( $(this).data('val') );
+            }
+          })
+          console.log(productList)
+          $('#products-requested').val(productList)
+        });
       });
+
 
     </script>
 

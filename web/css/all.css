@@ -61,6 +61,10 @@
   max-width: 5rem;
 
 }
+.order__form__product__outer--photo{
+  object-fit: cover;
+  height:3.5rem;
+}
 
 
 .btn-purchase{
