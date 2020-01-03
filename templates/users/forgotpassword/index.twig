@@ -1,23 +1,25 @@
 {% extends "_layout" %}
 
 {% block content %}
-<div class="row py-5">
-  <div class="col-md-12">
-    <h1>Title</h1>
-    <p>Description.</p>
-  </div>
-</div>
+
+{% include '_snippets/header-block' with
+    {
+      title: "Reset your password",
+      description:""
+    }
+%}
 
 <div class="row">
-  <div class="col s6">
+  <div class="col-sm-12">
     <form method="post" accept-charset="UTF-8">
         {{ csrfInput() }}
         {{ actionInput('users/send-password-reset-email') }}
         {{ redirectInput('') }}
 
-        <h3><label for="loginName">Username or email</label></h3>
-        <input id="loginName" type="text" name="loginName"
-            value="{% if loginName is defined %}{{ loginName }}{% else %}{{ craft.app.user.rememberedUsername }}{% endif %}">
+        <div class="form-group">
+          <label for="loginName">Username or Email</label>
+          <input id="loginName" class="form-control"  type="text" name="loginName" value="{% if loginName is defined %}{{ loginName }}{% else %}{{ craft.app.user.rememberedUsername }}{% endif %}">
+        </div>
 
         {% if errors is defined %}
             <ul class="errors">
@@ -27,10 +29,15 @@
             </ul>
         {% endif %}
 
-        <input type="submit" value="Submit">
+        {% if errorMessage is defined %}
+            <p class="error">{{ errorMessage }}</p>
+        {% endif %}
+
+        <div class="d-block d-sm-flex">
+          <input type="submit" class="btn btn-purchase" value="Reset">
+        </div>
     </form>
   </div>
 </div>
-
 
 {% endblock %}

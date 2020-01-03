@@ -3,77 +3,32 @@
 {% requireLogin %}
 
 {% block content %}
-<div class="row py-5">
-  <div class="col-md-12">
-    <h1>Title</h1>
-    <p>Description.</p>
-  </div>
-</div>
 
+
+{% include '_snippets/header-block' with
+    {
+      title: "Order Form",
+      description:"Order here..."
+    }
+%}
 
 <form action="https://formspree.io/mayyldgw" method="POST">
-  <input type="text" name="name">
-  <input type="email" name="_replyto">
+  <input type="text" placeholder="text" name="name">
+  <input type="email" placeholder="email" name="_replyto">
   <input type="submit" value="Send">
 </form>
 
-{% for entry in entry.availableProducts %}
-    {{entry.available.value}}<br>
-    {{ entry.productName }}<br>
-    {{ entry.price }}<br>
-    <br><br>
-{% endfor %} #}
 
+{% set products = craft.entries.section('products') %}
 
-CSS
+{% for product in products %}
 
-<div class="row">
-   <form class="col s12">
-     <div class="row">
-       <div class="input-field col s6">
-         <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-         <label for="first_name">First Name</label>
-       </div>
-       <div class="input-field col s6">
-         <input id="last_name" type="text" class="validate">
-         <label for="last_name">Last Name</label>
-       </div>
-     </div>
-     <div class="row">
-       <div class="input-field col s12">
-         <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-         <label for="disabled">Disabled</label>
-       </div>
-     </div>
-     <div class="row">
-       <div class="input-field col s12">
-         <input id="password" type="password" class="validate">
-         <label for="password">Password</label>
-       </div>
-     </div>
-     <div class="row">
-       <div class="input-field col s12">
-         <input id="email" type="email" class="validate">
-         <label for="email">Email</label>
-       </div>
-     </div>
-     <div class="row">
-       <div class="col s12">
-         This is an inline input field:
-         <div class="input-field inline">
-           <input id="email_inline" type="email" class="validate">
-           <label for="email_inline">Email</label>
-           <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-         </div>
-       </div>
-     </div>
-   </form>
- </div>
+    {{ product.productName }}<br>
+    {{ product.productDescription }}<br>
 
+{% endfor %}
 
-
-DATA:<br>
-maybe add an option here for a product they'd like to request, like an other option
+{# maybe add an option here for a product they'd like to request, like an other option #}
 
 <form method="post" id="form" action="" accept-charset="UTF-8">
     {{ csrfInput() }}
@@ -112,7 +67,7 @@ maybe add an option here for a product they'd like to request, like an other opt
     <p class="error-message error error-hidden">Your Message cannot be blank</p>
     <br><br>
 
-    <p class="thanks green">sent successfully! thanks</p>
+    <p class="thanks green">Sent successfully! thanks</p>
 
     <input type="submit" value="Send">
 </form>

@@ -44,15 +44,15 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav" style="margin-left: auto;">
     {% for item in nav %}
-      <li class="nav-item">
+      <li class="nav-item text-center">
         <a class="nav-link" href="{{ item.navigationItemLink.first().url }}">{{ item.navigationItemName }}</a>
       </li>
     {% endfor %}
     {% if currentUser %}
-    <li class="nav-item"><a class="nav-link text-white" href="{{ siteUrl('admin') }}">{{currentUser}}</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="{{ siteUrl('logout') }}">Logout</a></li>
+    <li class="nav-item text-center"><a class="nav-link text-white" href="{{ siteUrl('admin') }}">{{currentUser}}</a></li>
+    <li class="nav-item text-center"><a class="nav-link" href="{{ siteUrl('logout') }}">Logout</a></li>
     {% else %}
-    <li class="nav-item"><a class="nav-link text-white" href="{{ siteUrl('users/login') }}">Login</a></li>
+    <li class="nav-item text-center"><a class="nav-link text-white" href="{{ siteUrl('users/login') }}">Login</a></li>
     {% endif %}
     </ul>
   </div>

@@ -1,4 +1,4 @@
-dateModified: 1577670210
+dateModified: 1577991996
 email:
   fromEmail: h.lawrence@windowslive.com
   fromName: 'Awatoru Wildfood'
@@ -458,6 +458,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  aws-s3:
+    edition: standard
+    enabled: true
+    schemaVersion: '1.2'
 sections:
   5a041f1d-964e-41a5-a3e7-36f0a91ec4e2:
     name: Products
@@ -495,6 +499,26 @@ sections:
         uriFormat: 'products/{slug}'
         template: products/_entry
     propagationMethod: all
+  76267989-e622-4f2a-ac7d-b5c1f68a3c09:
+    name: 'Products (All)'
+    handle: productsAll
+    type: single
+    enableVersioning: true
+    propagationMethod: all
+    siteSettings:
+      1d897520-a9e2-4981-beda-4254507df91e:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: products
+        template: products/index
+    entryTypes:
+      6164959b-e4c8-4865-8a0f-2780df562258:
+        name: 'Products (All)'
+        handle: productsAll
+        hasTitleField: false
+        titleLabel: null
+        titleFormat: '{section.name|raw}'
+        sortOrder: 1
   799c5f9f-5fc4-44eb-9ab5-6b5b70a2fd4d:
     name: Home
     handle: home
@@ -578,7 +602,7 @@ sections:
   cecda293-6e2b-44f3-a22d-0c49bdaf2a86:
     name: 'Navigation Menu'
     handle: navigationMenu
-    type: channel
+    type: structure
     enableVersioning: true
     propagationMethod: all
     siteSettings:
@@ -587,6 +611,9 @@ sections:
         hasUrls: false
         uriFormat: ''
         template: null
+    structure:
+      uid: 3edb0108-5274-4dab-b3b9-9a78ffbdc2f2
+      maxLevels: null
     entryTypes:
       1055eb79-56f9-41b3-b477-33365fac6983:
         name: 'Navigation Menu'
@@ -624,9 +651,9 @@ sections:
       a39dd88a-bcfb-456b-a070-327b5b514111:
         name: News
         handle: news
-        hasTitleField: true
+        hasTitleField: false
         titleLabel: Title
-        titleFormat: ''
+        titleFormat: '{{newsTitle}}'
         sortOrder: 1
         fieldLayouts:
           8b4a0618-795f-442f-acab-4c299884450d:
@@ -637,13 +664,13 @@ sections:
                 fields:
                   0b3353c6-6585-45e9-9b26-7f8a36124b56:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 3
                   631b609a-3a78-4ddb-acae-caf3c6057662:
                     required: false
-                    sortOrder: 1
+                    sortOrder: 2
                   c4585c4e-f4a6-439c-a95b-1f2a50263b07:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 1
 siteGroups:
   c9424660-0760-48b0-b613-2c3499cf4ff8:
     name: 'Craft3 Jir6 Frb - Awatoru'

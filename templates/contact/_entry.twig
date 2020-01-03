@@ -1,12 +1,14 @@
 {% extends "_layout" %}
 
 {% block content %}
-<div class="row py-5">
-  <div class="col-md-12">
-    <h1>Title</h1>
-    <p>Description.</p>
-  </div>
-</div>
+{% include '_snippets/header-block' with
+    {
+      title: "Contact",
+      description:"Contact us..."
+    }
+%}
+
+
 
    <!-- <form>
      <div class="row">
@@ -91,18 +93,7 @@
 
 
 <style media="screen">
-  .error{
-    color:red;
-  }
-  .error-hidden{
-    display:none;
-  }
-  .white{
-    color:white;
-  }
-  .thanks{
-    display:none;
-  }
+
 </style>
 
 

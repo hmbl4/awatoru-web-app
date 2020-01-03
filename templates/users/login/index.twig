@@ -1,40 +1,45 @@
 {% extends "_layout" %}
 
 {% block content %}
-<div class="row py-5">
-  <div class="col-md-12">
-    <h1>Title</h1>
-    <p>Description.</p>
-  </div>
-</div>
+
+{% include '_snippets/header-block' with
+    {
+      title: "Login",
+      description:"Login in to your account"
+    }
+%}
+
 
 <div class="row">
-  <div class="col s6">
+  <div class="col-sm-12">
     <form method="post" accept-charset="UTF-8">
         {{ csrfInput() }}
         {{ actionInput('users/login') }}
 
-        <h3><label for="loginName">Username or email</label></h3>
-        <input id="loginName" type="text" name="loginName"
-            value="{{ craft.app.user.rememberedUsername }}">
+        <div class="form-group">
+          <label for="loginName">Username</label>
+          <input id="loginName"class="form-control"  type="text" name="loginName" value="{{ craft.app.user.rememberedUsername }}">
+          {# <small id="emailHelp" class="form-text text-muted">We'll use the same email to send you updates from us.</small> #}
+        </div>
 
-        <h3><label for="password">Password</label></h3>
-        <input id="password" type="password" name="password">
-
-        <label>
-            <input type="checkbox" name="rememberMe" value="1">
-            Remember me
-        </label>
-
-        <input type="submit" value="Login">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" class="form-control" type="password" name="password">
+          <label class="text-muted form-text form-text-small">
+              <input type="checkbox" name="rememberMe" value="1">
+              Remember me
+          </label>
+        </div>
 
         {% if errorMessage is defined %}
-            <p>{{ errorMessage }}</p>
+            <p class="error">{{ errorMessage }}</p>
         {% endif %}
+
+        <div class="d-block d-sm-flex">
+          <input type="submit" class="btn btn-purchase" value="Login">
+          <a class="btn btn-secondary ml-2" href="{{ url('users/forgotpassword') }}">Forget your password?</a>
+        </div>
     </form>
-
-    <p><a href="{{ url('users/forgotpassword') }}">Forget your password?</a></p>
-
   </div>
 </div>
 

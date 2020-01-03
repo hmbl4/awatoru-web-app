@@ -2,12 +2,15 @@
 {% requireLogin %}
 
 {% block content %}
-<div class="row py-5">
-  <div class="col-md-12">
-    <h1>Title</h1>
-    <p>Description.</p>
-  </div>
-</div>
+
+{% include '_snippets/header-block' with
+    {
+      title: "News",
+      description:"Description"
+    }
+%}
+
+
 news main page here
 THEN
 -> individual post with contact button on each -> CONTACT leads to emails
