@@ -1,11 +1,11 @@
-dateModified: 1577991996
+dateModified: 1578045357
 email:
   fromEmail: h.lawrence@windowslive.com
   fromName: 'Awatoru Wildfood'
   template: ''
   transportType: putyourlightson\sendgrid\mail\SendgridAdapter
   transportSettings:
-    apiKey: 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
+    apiKey: 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
 fieldGroups:
   335454c1-7446-4c14-b7af-251dcc1e3a22:
     name: 'News feed'

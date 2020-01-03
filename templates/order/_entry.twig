@@ -12,21 +12,21 @@
     }
 %}
 
-<form action="https://formspree.io/mayyldgw" method="POST">
+{# <form action="https://formspree.io/mayyldgw" method="POST">
   <input type="text" placeholder="text" name="name">
   <input type="email" placeholder="email" name="_replyto">
   <input type="submit" value="Send">
-</form>
+</form> #}
 
 
 {% set products = craft.entries.section('products') %}
 
-{% for product in products %}
+{# {% for product in products %}
 
     {{ product.productName }}<br>
     {{ product.productDescription }}<br>
 
-{% endfor %}
+{% endfor %} #}
 
 {# maybe add an option here for a product they'd like to request, like an other option #}
 
@@ -34,58 +34,49 @@
     {{ csrfInput() }}
     <input type="hidden" name="action" value="contact-form/send">
     {{ redirectInput('contact/?res=tks') }}
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="from-name">Name</label>
+          <input id="from-name" type="text" class="form-control" name="fromName" value="{{ message.fromName ?? '' }}">
+          <p class="error-fromName error error-hidden">Your Name cannot be blank</p>
+        </div>
+      </div>
 
-    <h3><label for="from-name">Your Name</label></h3>
-    <input id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}">
-    <p class="error-fromName error error-hidden">Your Name cannot be blank</p>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="from-email">Email</label>
+          <input id="from-email" type="email" class="form-control" name="fromEmail" value="{{ message.fromEmail ?? '' }}">
+          <p class="error-fromEmail error error-hidden">Your Email cannot be blank.</p>
+        </div>
+      </div>
 
-    <h3><label for="from-email">Your Email</label></h3>
-    <input id="from-email" type="email" name="fromEmail" value="{{ message.fromEmail ?? '' }}">
-    <p class="error-fromEmail error error-hidden">Your Email cannot be blank.</p>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea rows="2" cols="100%" class="form-control" id="message" name="message">{{ message.message ?? '' }}</textarea>
+          <p class="error-message error error-hidden">Your Message cannot be blank</p>
+        </div>
+      </div>
+    </div>
 
-    {# need to test #}
-
-    <h3><label for="available-products">Available Products</label></h3>
-    <input id="available-products" type="hidden" name="fromEmail" value="">
+    <label for="available-products">Products:</label>
+    <input id="available-products" type="hidden" name="products" value="">
     <ul>
-        {% for entry in entry.availableProducts %}
-          <input type="checkbox" name="{{ entry.productName }}" value="{{ entry.productName }}"> {{ entry.productName }}<br>
+        {% for product in products %}
+        <div class="">
+            <input type="checkbox" name="{{ product.productName }}" value="{{ product.productName }}"> {{ entry.productName }}
+            <label for="{{ product.productName }}">{{ product.productName }}</label>
+            </div>
+
         {% endfor %}
     </ul>
     <p class="error-fromEmail error error-hidden">Your product selection cannot be blank.</p>
 
-
-    {# / need to test #}
-
-
-    <h3><label for="subject">Subject</label></h3>
-    <input id="subject" type="text" name="subject" value="{{ message.subject ?? '' }}">
-    <p class="error-subject error error-hidden">Your Subject cannot be blank</p>
-
-    <h3><label for="message">Message</label></h3>
-    <textarea rows="2" cols="100%" id="message" name="message">{{ message.message ?? '' }}</textarea>
-    <p class="error-message error error-hidden">Your Message cannot be blank</p>
-    <br><br>
-
     <p class="thanks green">Sent successfully! thanks</p>
 
-    <input type="submit" value="Send">
+    <input type="submit" class="btn btn-purchase" value="Order Now">
 </form>
-
-<style media="screen">
-  .error{
-    color:red;
-  }
-  .error-hidden{
-    display:none;
-  }
-  .white{
-    color:white;
-  }
-  .thanks{
-    display:none;
-  }
-</style>
 
 
     <script type="text/javascript">
