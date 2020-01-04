@@ -1,12 +1,35 @@
-{{entry.title}}
 {% requireLogin %}
-we dont' need this page, just add any information on the card. on the index twig
+
+{% extends "_layout" %}
+{% block content %}
+{# <div class="feed__box__product__outer mt-3">
+  <div class="row">
+    <div class="col-12">
+    <img class="w-100" style="" src="https://images.squarespace-cdn.com/content/v1/58a123c546c3c41632032fa9/1559174224934-1BUVDDP8FHWQV9ZV6L8A/ke17ZwdGBToddI8pDm48kAwMLRymhwpMU3nDDam6qip7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmmbLecD_NwfjqNxjfNDWHyPDBkcCBSEQC4qtixQM1rqE8VqmxstjSbr0VQM7hPWFL/IMG_1596.JPG?format=200w" alt="">
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column">
+          <p class="feed__box__product__outer--name mb-2"><b>{{entry.productName}}</b></p>
+          <p class="feed__box__product__outer--link pb-0 mb-4 pr-2">{{entry.productDescription}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> #}
 
 
-product name
-
-description
-
-image
-
-product 
+<div class="feed__box__product__outer mt-3">
+  <div class="row">
+    <div class="col-md-6">
+    <img class="w-100" style="" src="https://images.squarespace-cdn.com/content/v1/58a123c546c3c41632032fa9/1559174224934-1BUVDDP8FHWQV9ZV6L8A/ke17ZwdGBToddI8pDm48kAwMLRymhwpMU3nDDam6qip7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmmbLecD_NwfjqNxjfNDWHyPDBkcCBSEQC4qtixQM1rqE8VqmxstjSbr0VQM7hPWFL/IMG_1596.JPG?format=200w" alt="">
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column">
+          <p class="feed__box__product__outer--name mb-2 pl-2 pl-md-0"><b>{{entry.productName}}</b></p>
+          <p class="feed__box__product__outer--link pr-2 pl-2 pl-md-0">{{entry.productDescription}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

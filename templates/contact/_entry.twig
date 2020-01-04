@@ -1,4 +1,5 @@
 {% extends "_layout" %}
+{% requireLogin %}
 
 {% block content %}
 {% include '_snippets/header-block' with
@@ -51,6 +52,8 @@
      </div> #}
    </form> -->
 
+
+<p> Youre signed in as {{currentUser}}</p> <a href="{{url('logout')}}">Not you?</a>
 
 
 <form method="post" id="form" action="" accept-charset="UTF-8">

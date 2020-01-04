@@ -36,6 +36,7 @@
 
 {# maybe add an option here for a product they'd like to request, like an other option #}
 
+
 <form method="post" id="form" action="" accept-charset="UTF-8">
     {{ csrfInput() }}
     <input type="hidden" name="action" value="contact-form/send">
@@ -71,6 +72,8 @@
 
     <label for="available-products">Products:</label>
     <input id="products-requested" type="hidden" name="products" value="">
+
+    {# TODO need to make this form send the products correctly#}
 
     <ul>
       {% for product in products %}

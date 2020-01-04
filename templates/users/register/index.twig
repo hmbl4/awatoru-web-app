@@ -5,19 +5,19 @@
 {% include '_snippets/header-block' with
     {
       title: "Register",
-      description:"Login in to your account"
+      description:"Register for an account"
     }
 %}
 
 
 <div class="row">
-  <div class="col s6">
+  <div class="col-sm-12">
     <form method="post" accept-charset="UTF-8">
     {{ csrfInput() }}
     {{ actionInput('users/save-user') }}
     {{ redirectInput('') }}
 
-    {% macro errorList(errors) %}
+    {# {% macro errorList(errors) %}
         {% if errors %}
             <ul class="errors">
                 {% for error in errors %}
@@ -25,35 +25,39 @@
                 {% endfor %}
             </ul>
         {% endif %}
-    {% endmacro %}
+    {% endmacro %} #}
     <div class="form-group">
-
-      label for="username">Username</label>
-      <input id="username" type="text" name="username"
+      <label for="username">Username</label>
+      <input id="username" class="form-control" type="text" name="username"
           {%- if user is defined %} value="{{ user.username }}"{% endif -%}>
 
       {% if user is defined %}
           {{ _self.errorList(user.getErrors('username')) }}
       {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" class="form-control" type="text" name="email"
+          {%- if user is defined %} value="{{ user.email }}"{% endif %}>
+
+      {% if user is defined %}
+          {{ _self.errorList(user.getErrors('email')) }}
+      {% endif %}
 
     </div>
 
-    <label for="email">Email</label>
-    <input id="email" type="text" name="email"
-        {%- if user is defined %} value="{{ user.email }}"{% endif %}>
+    <div class="form-group">
 
-    {% if user is defined %}
-        {{ _self.errorList(user.getErrors('email')) }}
-    {% endif %}
-
-    <h3><label for="password">Password</label></h3>
-    <input id="password" type="password" name="password">
+    <label for="password">Password</label>
+    <input id="password" type="password" class="form-control" name="password">
 
     {% if user is defined %}
         {{ _self.errorList(user.getErrors('password')) }}
     {% endif %}
+    </div>
 
-    <input type="submit" value="Register">
+    <input type="submit" class="btn btn-purchase" value="Register">
 </form>
 </div>
 </div>

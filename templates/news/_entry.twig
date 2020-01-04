@@ -4,6 +4,47 @@
 {% requireLogin %}
 
 
+<div class="feed__box">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="feed__box--title">{{entry.newsTitle}} <span class="feed__box--time"><i>{{entry.postDate | date("M d, Y") }}</i></span></h2>
+      <p class="feed__box--description mb-3">{{ entry.newsDescription }}</p>
+      {# feed box #}
+      {# feed box outer #}
+
+      {# feed box single #}
+      {% set news_items_products = entry.newsProducts %}
+      {% for item in news_items_products %}
+      <div class="feed__box__product__outer mt-3">
+        <div class="row">
+          <div class="col-12">
+            <div class="d-flex flex-row">
+              <img class="feed__box__product__outer--photo" style="" src="https://images.squarespace-cdn.com/content/v1/58a123c546c3c41632032fa9/1559174224934-1BUVDDP8FHWQV9ZV6L8A/ke17ZwdGBToddI8pDm48kAwMLRymhwpMU3nDDam6qip7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmmbLecD_NwfjqNxjfNDWHyPDBkcCBSEQC4qtixQM1rqE8VqmxstjSbr0VQM7hPWFL/IMG_1596.JPG?format=200w" alt="">
+              <div class="d-flex flex-column pl-2 ">
+                <p class="feed__box__product__outer--name"><b>{{item}}</b><p>
+                <a class="feed__box__product__outer--link pb-0 mb-0" href="{{item.url}}">View product →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="row mt-3">
+        <div class="col-sm-6 mt-2 mt-sm-0">
+          <a class="btn btn-purchase w-100" href="#">
+            Messenger?
+          </a>
+        </div>
+          <div class="col-sm-6 mt-2 mt-sm-0">
+        <a class="btn btn-purchase w-100" href="mailto:awatoru@gmail.com?subject=Enquiry: {{entry.newsTitle}}&body=Hi there! I'd like to enquire about: {% for item in news_items_products %}{{item}},{% endfor %} ({{entry.url}}). ">
+              Order page
+              {# todo update this to link to order page and fill in details automatically. #}
+            </a>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 {# admin things!
 
 API_key ="only rendered by admins"
@@ -68,11 +109,6 @@ automatically appends the url at the end of the text message. #}
 
 
 
-news entry!<br><br>
-
-{{entry.title}}<br>
-{{entry.newsDescription}}<br>
-{{entry.newsTitle}}<br>
 
 
 
