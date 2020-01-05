@@ -13,28 +13,8 @@
     }
 %}
 
-{# <form action="https://formspree.io/mayyldgw" method="POST">
-  <input type="text" placeholder="text" name="name">
-  <input type="email" placeholder="email" name="_replyto">
-  <label for="available-products">Products:</label>
-  <input id="products-requested" type="hidden" name="products" value="">
+{# receipt? #}
 
-  <ul>
-    {% for product in products %}
-      <li style="list-style-type: none;margin-left:-1rem;">
-        <input type="checkbox" name="product-check-{{loop.index}}" class="product-checkbox" data-val="{{ product.productName }}">
-        <label for="product-check-{{loop.index}}" class="feed__box__product__outer--name mt-0">{{ product.productName }}</label>
-      </li>
-    {% endfor %}
-  </ul>
-  <p class="error-fromEmail error error-hidden">Your product selection cannot be blank.</p>
-
-  <input type="submit" value="Send">
-</form> #}
-
-
-
-{# maybe add an option here for a product they'd like to request, like an other option #}
 
 <form method="post" id="form" action="" accept-charset="UTF-8">
     {{ csrfInput() }}
@@ -69,7 +49,7 @@
     <input id="form-type" type="hidden" name="OrderForm" value="Order Form">
 
     <label for="available-products">Products requested:</label>
-    <input id="products-requested" type="hidden" name="products" value="">
+    {# <input id="products-requested" type="hidden" name="message[products]" value=""> #}
 
 
     <ul>
@@ -86,9 +66,9 @@
             {% endif %}
           {% endfor %}
         {% if hasCheckbox %}
-          <input type="checkbox" name="product-check-{{loop.index}}" class="product-checkbox" data-val="{{ product.productName }}" checked>
+          <input type="checkbox" name="message[ProductsOrdered][]" class="product-checkbox" data-val="{{ product.productName }}" checked>
         {% else %}
-          <input type="checkbox" name="product-check-{{loop.index}}" class="product-checkbox" data-val="{{ product.productName }}">
+          <input type="checkbox" name="message[ProductsOrdered][]" class="product-checkbox" data-val="{{ product.productName }}">
         {% endif %}
 
           <label for="product-check-{{loop.index}}" class="feed__box__product__outer--name mt-0">{{ product.productName }}</label>
@@ -107,7 +87,7 @@
 
     $( document ).ready(function() {
       console.log( "ready!" );
-      updateCheckboxes()
+      // updateCheckboxes()
 
       // $('#form').submit(function(event) {
       //     event.preventDefault();
@@ -141,21 +121,21 @@
       //     });
       //   });
 
-        $(".product-checkbox").on('change',function(event){
-          updateCheckboxes()
-          console.log( "change!" );
-        });
-
-        function updateCheckboxes() {
-          var productList = []
-          $(".product-checkbox").each(function(){
-            if ($(this).is(':checked') ) {
-              productList.push( $(this).data('val') );
-            }
-          })
-          console.log(productList)
-          $('#products-requested').val(productList)
-        }
+        // $(".product-checkbox").on('change',function(event){
+        //   updateCheckboxes()
+        //   console.log( "change!" );
+        // });
+        //
+        // function updateCheckboxes() {
+        //   var productList = []
+        //   $(".product-checkbox").each(function(){
+        //     if ($(this).is(':checked') ) {
+        //       productList.push( $(this).data('val') );
+        //     }
+        //   })
+        //   console.log(productList)
+        //   $('#products-requested').val(productList)
+        // }
       });
 
 

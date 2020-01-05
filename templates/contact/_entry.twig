@@ -59,7 +59,7 @@
 <form method="post" id="form" action="" accept-charset="UTF-8">
     {{ csrfInput() }}
     <input type="hidden" name="action" value="contact-form/send">
-    {{ redirectInput('contact/thanks/') }}
+    {{ redirectInput('contact/thanks') }}
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <input id="subject" type="hidden" name="subject" value="Query from {{entry.title}}">
+    <input id="subject" type="hidden" name="subject" value="Query from Contact Form">
 
     <div class="alert alert-success thanks" role="alert">
       <span class="white-text">Thanks! <br>We've received your message, we'll get back to you as soon as possible.</span>
