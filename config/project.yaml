@@ -1,6 +1,6 @@
-dateModified: 1578045357
+dateModified: 1578183544
 email:
-  fromEmail: h.lawrence@windowslive.com
+  fromEmail: noreply@awatoru.frb.io
   fromName: 'Awatoru Wildfood'
   template: ''
   transportType: putyourlightson\sendgrid\mail\SendgridAdapter
@@ -449,8 +449,8 @@ plugins:
     enabled: true
     schemaVersion: 1.0.0
     settings:
-      toEmail: h.lawrence@windowslive.com
-      prependSender: 'On behalf of'
+      toEmail: henrylawrence1993@gmail.com
+      prependSender: From
       prependSubject: 'New message from Awatoru'
       allowAttachments: ''
       successFlashMessage: 'Your message has been sent.'

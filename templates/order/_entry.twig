@@ -49,8 +49,7 @@
     <input id="form-type" type="hidden" name="OrderForm" value="Order Form">
 
     <label for="available-products">Products requested:</label>
-    {# <input id="products-requested" type="hidden" name="message[products]" value=""> #}
-
+    <input id="products-requested" type="hidden" name="message[products]" value="">
 
     <ul>
       {% for product in products %}
@@ -66,9 +65,9 @@
             {% endif %}
           {% endfor %}
         {% if hasCheckbox %}
-          <input type="checkbox" name="message[ProductsOrdered][{{ product.productName }}]" class="product-checkbox" data-val="{{ product.productName }}" checked>
+          <input type="checkbox" name="checked-product-{{loop.index}}" class="product-checkbox" data-val="{{ product.productName }}" checked>
         {% else %}
-          <input type="checkbox" name="message[ProductsOrdered][{{ product.productName }}]" class="product-checkbox" data-val="{{ product.productName }}">
+          <input type="checkbox" name="checked-product-{{loop.index}}" class="product-checkbox" data-val="{{ product.productName }}">
         {% endif %}
 
           <label for="product-check-{{loop.index}}" class="feed__box__product__outer--name mt-0">{{ product.productName }}</label>
@@ -87,8 +86,7 @@
 
     $( document ).ready(function() {
       console.log( "ready!" );
-      // updateCheckboxes()
-
+      updateCheckboxes()
       // $('#form').submit(function(event) {
       //     event.preventDefault();
       //     console.log("preventDefault!");
@@ -121,21 +119,21 @@
       //     });
       //   });
 
-        // $(".product-checkbox").on('change',function(event){
-        //   updateCheckboxes()
-        //   console.log( "change!" );
-        // });
-        //
-        // function updateCheckboxes() {
-        //   var productList = []
-        //   $(".product-checkbox").each(function(){
-        //     if ($(this).is(':checked') ) {
-        //       productList.push( $(this).data('val') );
-        //     }
-        //   })
-        //   console.log(productList)
-        //   $('#products-requested').val(productList)
-        // }
+        $(".product-checkbox").on('change',function(event){
+          updateCheckboxes()
+          console.log( "change!" );
+        });
+
+        function updateCheckboxes() {
+          var productList = []
+          $(".product-checkbox").each(function(){
+            if ($(this).is(':checked') ) {
+              productList.push( $(this).data('val') );
+            }
+          })
+          console.log(productList)
+          $('#products-requested').val(productList)
+        }
       });
 
 
