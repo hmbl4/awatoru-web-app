@@ -1,0 +1,18 @@
+{% extends "_layout" %}
+{% requireLogin %}
+
+{% block content %}
+{% include '_snippets/header-block' with
+    {
+      title: "Thanks!",
+      description:""
+    }
+%}
+
+<div class="alert alert-success" role="alert">
+  <span>We've received your order!</span>
+</div>
+
+
+
+{% endblock %}

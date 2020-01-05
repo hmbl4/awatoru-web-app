@@ -52,85 +52,83 @@
      </div> #}
    </form> -->
 
-
-<p> Youre signed in as {{currentUser}}</p> <a href="{{url('logout')}}">Not you?</a>
-
+{# <div class="alert alert-primary" role="alert">
+  <p class="pb-0 mb-0"> You're signed in as {{currentUser}} <a href="{{url('logout')}}" >Not you?</a></p>
+</div> #}
 
 <form method="post" id="form" action="" accept-charset="UTF-8">
     {{ csrfInput() }}
     <input type="hidden" name="action" value="contact-form/send">
-    {{ redirectInput('contact/?res=tks') }}
+    {{ redirectInput('contact/thanks/') }}
     <div class="row">
       <div class="col-md-6">
-        <label for="from-name">Your Name</label>
-        <input id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}">
-        <p class="error-fromName error error-hidden">Your Name cannot be blank</p>
+        <div class="form-group">
+          <label for="from-name">Your Name</label>
+          <input id="from-name" type="text" class="form-control" name="fromName" value="{{ currentUser.name ?? '' }}">
+          <p class="error-fromName error error-hidden">Your Name cannot be blank</p>
+        </div>
       </div>
 
       <div class="col-md-6">
-        <label for="from-email">Your Email</label>
-        <input id="from-email" type="email" name="fromEmail" value="{{ message.fromEmail ?? '' }}">
-        <p class="error-fromEmail error error-hidden">Your Email cannot be blank.</p>
+        <div class="form-group">
+          <label for="from-email">Your Email</label>
+          <input id="from-email" type="email" class="form-control" name="fromEmail" value="{{ currentUser.email ?? '' }}">
+          <p class="error-fromEmail error error-hidden">Your Email cannot be blank.</p>
+        </div>
       </div>
-
-
-      <div class="col-md-6">
-        <textarea placeholder="Your message here..."rows="2" cols="100%" id="message" name="message" style="padding-left:.5rem;padding-top:.5rem">{{ message.message ?? '' }}</textarea>
-        <p class="error-message error error-hidden">Your Message cannot be blank</p>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+        <label for="message">Message / Requests</label>
+          <textarea placeholder="Your message here..."rows="3" cols="100%" id="message" name="message" style="padding-left:.6rem;padding-top:.3rem;max-width: 100%;border: 1px solid #d0d6db;border-radius: 3px;">{{ message.message ?? '' }}</textarea>
+          <p class="error-message error error-hidden">Your Message cannot be blank</p>
+        </div>
       </div>
     </div>
 
     <input id="subject" type="hidden" name="subject" value="Query from {{entry.title}}">
-    {# <p class="thanks green">sent successfully! thanks</p> #}
 
-    <div class="card-panel teal thanks">
-      <span class="white-text">Thanks! We've received your message, we'll get back to you as soon as possible.</span>
+    <div class="alert alert-success thanks" role="alert">
+      <span class="white-text">Thanks! <br>We've received your message, we'll get back to you as soon as possible.</span>
     </div>
 
-    {#<input type="submit" class="" value="Send"> #}
-
-    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-       <i class="material-icons right">send</i>
-    </button>
+    <input type="submit" class="btn btn-purchase" value="Send">
 </form>
 
-
-<style media="screen">
-
-</style>
 
 
     <script type="text/javascript">
 
-    $( document ).ready(function() {
-      console.log( "ready!" );
-      $('#form').submit(function(event) {
-          event.preventDefault();
-          console.log("preventDefault!");
-          $('.error').slideUp();
-          $.post({
-              url: '/',
-              dataType: 'json',
-              data: $(this).serialize(),
-              success: function(response) {
-                  console.log(response)
-                  if (response.success) {
-                      console.log("Worked.");
-                      $('.thanks').fadeIn();
-                  } else {
-                      $('.thanks').fadeOut();
-                      console.log("Didn't work.");
-                      $('.error').slideUp();
-                      for (i in response.errors) {
-                        var className = '.error-'+i
-                        console.log(className);
-                        $(className).slideDown();
-                      }
-                  }
-              }
-          });
-        });
-      });
+    // $( document ).ready(function() {
+    //   console.log( "ready!" );
+    //   $('#form').submit(function(event) {
+    //       event.preventDefault();
+    //       console.log("preventDefault!");
+    //       $('.error').slideUp();
+    //       $.post({
+    //           url: '/',
+    //           dataType: 'json',
+    //           data: $(this).serialize(),
+    //           success: function(response) {
+    //               console.log(response)
+    //               if (response.success) {
+    //                   console.log("Worked.");
+    //                   $('.thanks').fadeIn();
+    //               } else {
+    //                   $('.thanks').fadeOut();
+    //                   console.log("Didn't work.");
+    //                   $('.error').slideUp();
+    //                   for (i in response.errors) {
+    //                     var className = '.error-'+i
+    //                     console.log(className);
+    //                     $(className).slideDown();
+    //                   }
+    //               }
+    //           }
+    //       });
+    //     });
+    //   });
 
     </script>
 
