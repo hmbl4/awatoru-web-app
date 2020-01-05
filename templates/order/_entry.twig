@@ -66,9 +66,9 @@
             {% endif %}
           {% endfor %}
         {% if hasCheckbox %}
-          <input type="checkbox" name="message[ProductsOrdered][]" class="product-checkbox" data-val="{{ product.productName }}" checked>
+          <input type="checkbox" name="message[ProductsOrdered][{{ product.productName }}]" class="product-checkbox" data-val="{{ product.productName }}" checked>
         {% else %}
-          <input type="checkbox" name="message[ProductsOrdered][]" class="product-checkbox" data-val="{{ product.productName }}">
+          <input type="checkbox" name="message[ProductsOrdered][{{ product.productName }}]" class="product-checkbox" data-val="{{ product.productName }}">
         {% endif %}
 
           <label for="product-check-{{loop.index}}" class="feed__box__product__outer--name mt-0">{{ product.productName }}</label>
