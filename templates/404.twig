@@ -1,0 +1,21 @@
+{# Home page / Feed #}
+
+{% requireLogin %}
+
+{% extends "_layout" %}
+
+
+
+
+{% block content %}
+
+{% include '_snippets/header-block' with
+    {
+      title: "404 ",
+      description:"Not found"
+    }
+%}
+
+<a href="{{siteUrl}}" class="btn btn-purchase">Return to home</a>
+
+{% endblock %}

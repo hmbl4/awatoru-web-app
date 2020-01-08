@@ -8,29 +8,31 @@
 {% include '_snippets/header-block' with
     {
       title: "Products",
-      description:"All Products..."
+      description:"Here are all of our products, don't hesitate to contact us if there's something you can't see here."
     }
 %}
 
 <div class="row">
 {% for product in products %}
-
-
 {# use css from home, just change to suit this page, maybe vertical? #}
 
-<div class="feed__box__product__outer mt-3">
-  <div class="row">
-    <div class="col-12">
-      <div class="d-flex flex-row">
-          <img class="feed__box__product__outer--photo" style="" src="https://images.squarespace-cdn.com/content/v1/58a123c546c3c41632032fa9/1559174224934-1BUVDDP8FHWQV9ZV6L8A/ke17ZwdGBToddI8pDm48kAwMLRymhwpMU3nDDam6qip7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmmbLecD_NwfjqNxjfNDWHyPDBkcCBSEQC4qtixQM1rqE8VqmxstjSbr0VQM7hPWFL/IMG_1596.JPG?format=200w" alt="">
-          <div class="d-flex flex-column pl-2 ">
-            <p class="feed__box__product__outer--name"><b>{{product.productName}}</b><p>
-            <a class="feed__box__product__outer--link pb-0 mb-0" href="{{product.url}}">{{product.productDescription}}</a>
-          </div>
-        </div>
+<div class="col-sm-6">
+  <div class="feed__box__product__outer mt-3">
+    <div class="d-flex flex-column">
+      <div style="max-height:13.5rem;overflow:hidden;">
+        <img class="" style="width:100%;max-height:13.5rem;min-height:10rem;object-fit:cover;" src="{{product.productImage.first().url }}" alt="">
+      </div>
+      <div class="d-flex flex-column pl-2 pr-2">
+        <p class="feed__box__product__outer--name pb-2 pr-2"><b>{{product.productName}}</b></p>
+        {% if product.productDescription is not none %}
+          <p class="feed__box__product__outer--link pr-2">{{product.productDescription}}</p>
+        {% endif %}
+
+        <a href="{{ url('order' , '?pdts=' ~ product.productName ) }}" class="btn btn-purchase mb-2">Order</a>
       </div>
     </div>
   </div>
+</div>
 
 
 {% endfor %}

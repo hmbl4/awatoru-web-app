@@ -19,9 +19,12 @@
 
 <div class="feed__box__product__outer mt-3">
   <div class="row">
+  {% set image = entry.productImage.first() %}
+  {% if image %}
     <div class="col-md-6">
-    <img class="w-100" style="" src="https://images.squarespace-cdn.com/content/v1/58a123c546c3c41632032fa9/1559174224934-1BUVDDP8FHWQV9ZV6L8A/ke17ZwdGBToddI8pDm48kAwMLRymhwpMU3nDDam6qip7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmmbLecD_NwfjqNxjfNDWHyPDBkcCBSEQC4qtixQM1rqE8VqmxstjSbr0VQM7hPWFL/IMG_1596.JPG?format=200w" alt="">
+      <img class="w-100" style="" src="{{ image.url }}" alt="">
     </div>
+  {% endif %}
     <div class="col-md-6">
       <div class="d-flex flex-row">
         <div class="d-flex flex-column">
@@ -32,4 +35,6 @@
     </div>
   </div>
 </div>
+
+
 {% endblock %}

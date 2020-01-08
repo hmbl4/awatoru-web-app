@@ -1,0 +1,70 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+{% include '_snippets/header-block' with
+    {
+      title: "Edit My Profile ",
+      description:"Edit your profile here"
+    }
+%}
+
+<div class="row">
+  <div class="col-sm-12">
+  {% requireLogin %}
+    <form id="profile-form" class="profile-form" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+    {{ actionInput('users/save-user') }}
+
+    {{ csrfInput() }}
+
+    {{ hiddenInput('userId', currentUser.id) }}
+
+    <div class="row ">
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for="user-name">User Name</label>
+          <input type="text" id="user-name" class="form-control" name="userName" value="{{ currentUser.username }}">
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6 col-md-4">
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" class="form-control" name="firstName" value="{{ currentUser.firstName }}">
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" class="form-control" name="lastName" value="{{ currentUser.lastName }}">
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="phone-number">Phone Number</label>
+          <input type="text" id="phoneNumber" class="form-control" name="fields[phoneNumber]" value="{{ currentUser.phoneNumber }}">
+          <small id="emailHelp" class="form-text text-muted">Please enter the country code, e.g. 64273504253</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" class="form-control" name="email" value="{{ currentUser.email }}">
+          <small id="emailHelp" class="form-text text-muted">We use this address for all communications</small>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input type="submit" class="btn btn-purchase" value="Save Profile">
+      <a href="{{ craft.request.url }}" class="btn btn-secondary">Reset</a>
+    </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

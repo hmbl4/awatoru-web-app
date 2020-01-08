@@ -3,6 +3,11 @@
 {% block content %}
 {% requireLogin %}
 
+{# Create a user query with the 'group' parameter #}
+{% set myUserQuery = craft.users().group('chefs') %}
+
+{# Fetch the users #}
+{% set chefs = myUserQuery.all() %}
 
 <div class="feed__box">
   <div class="row">
@@ -19,7 +24,10 @@
         <div class="row">
           <div class="col-12">
             <div class="d-flex flex-row">
-              <img class="feed__box__product__outer--photo" style="" src="https://images.squarespace-cdn.com/content/v1/58a123c546c3c41632032fa9/1559174224934-1BUVDDP8FHWQV9ZV6L8A/ke17ZwdGBToddI8pDm48kAwMLRymhwpMU3nDDam6qip7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmmbLecD_NwfjqNxjfNDWHyPDBkcCBSEQC4qtixQM1rqE8VqmxstjSbr0VQM7hPWFL/IMG_1596.JPG?format=200w" alt="">
+              {% set image = item.productImage %}
+              {% if image %}
+              <img class="feed__box__product__outer--photo" style="" src="{{item.productImage.first().url}}" alt="">
+              {% endif %}
               <div class="d-flex flex-column pl-2 ">
                 <p class="feed__box__product__outer--name"><b>{{item}}</b><p>
                 <a class="feed__box__product__outer--link pb-0 mb-0" href="{{item.url}}">View product →</a>
@@ -29,22 +37,51 @@
         </div>
       </div>
       {% endfor %}
+
       <div class="row mt-3">
-        <div class="col-sm-6 mt-2 mt-sm-0">
-          <a class="btn btn-purchase w-100" href="#">
-            Messenger?
+        <div class="col-sm-12 mt-2 mt-sm-0">
+          <a class="btn btn-purchase w-100" href="{{ url('order' , '?pdts=' ~ news_items_products|join(',') ) }}">
+            Order page
+            {# todo update this to link to order page and fill in details automatically. #}
           </a>
         </div>
-          <div class="col-sm-6 mt-2 mt-sm-0">
-        <a class="btn btn-purchase w-100" href="mailto:awatoru@gmail.com?subject=Enquiry: {{entry.newsTitle}}&body=Hi there! I'd like to enquire about: {% for item in news_items_products %}{{item}},{% endfor %} ({{entry.url}}). ">
-              Order page
-              {# todo update this to link to order page and fill in details automatically. #}
-            </a>
-          </div>
       </div>
     </div>
   </div>
 </div>
+{% if currentUser.admin %}
+<div class="feed__box">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="admin-panel">
+        <div class="row">
+          <div class="col-sm-12 mt-2 mt-sm-0">
+          <h2 class="feed__box--title">Send to Chefs <span class="badge badge-warning ml-2">Admin only</span></h2>
+          <table>
+            <tr>
+              <th style="min-width: 7rem;height: 5rem;">User</th>
+              <th style="min-width: 7rem;">Phone</th>
+              <th style="min-width: 15rem;">Receiving communication?</th>
+            </tr>
+            {% for chef in chefs %}
+              <tr>
+                <td>{{ chef.username }}</td>
+                <td>{{ chef.phoneNumber }}</td>
+                <td>{{ chef.receivesCommunications }}</td>
+              </tr>
+            {% endfor %}
+            </table>
+            <a href="#" class="btn btn-purchase mt-4">Send</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+
 {# admin things!
 
 API_key ="only rendered by admins"

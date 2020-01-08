@@ -71,14 +71,15 @@
 .btn-purchase{
   color: #fff;
   background-color: #46761f;
-  border-color: #fff;
+  border-color: #46761f;
   border-radius: 2px;
 }
 
 .btn-purchase:hover{
   color: #fff;
   background-color: #3b631a;
-  border-color: #fff;
+  border-color: #46761f;
+
 }
 
 .btn-secondary{

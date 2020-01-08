@@ -1,4 +1,7 @@
-dateModified: 1578183544
+assets:
+  tempVolumeUid: 2256ac43-7ed6-4bba-9f4c-1a6a50b5ad7b
+  tempSubpath: temp_images
+dateModified: 1578372145
 email:
   fromEmail: noreply@awatoru.frb.io
   fromName: 'Awatoru Wildfood'
@@ -57,23 +60,6 @@ fields:
       validateRelatedElements: ''
     contentColumnType: string
     fieldGroup: a3e62c01-c6b9-47f6-9904-6db8c24f0b71
-  23d11b87-2fe8-43aa-bdcd-4bf76b0c0719:
-    name: Email
-    handle: email
-    instructions: ''
-    searchable: true
-    translationMethod: none
-    translationKeyFormat: null
-    type: craft\fields\PlainText
-    settings:
-      placeholder: ''
-      code: ''
-      multiline: ''
-      initialRows: '4'
-      charLimit: ''
-      columnType: text
-    contentColumnType: text
-    fieldGroup: 7a701a6e-72c8-4d5b-ac96-2830c462a6ea
   39df27ca-5b1d-47b2-bd31-38bff959da95:
     name: 'Product Description'
     handle: productDescription
@@ -91,23 +77,6 @@ fields:
       columnType: text
     contentColumnType: text
     fieldGroup: 4b000de0-c332-4c52-806f-0b6adf2a6140
-  5102df7b-e447-4874-9c46-d4cb75c13b7c:
-    name: 'First Name'
-    handle: firstName
-    instructions: ''
-    searchable: true
-    translationMethod: none
-    translationKeyFormat: null
-    type: craft\fields\PlainText
-    settings:
-      placeholder: ''
-      code: ''
-      multiline: ''
-      initialRows: '4'
-      charLimit: ''
-      columnType: text
-    contentColumnType: text
-    fieldGroup: 7a701a6e-72c8-4d5b-ac96-2830c462a6ea
   631b609a-3a78-4ddb-acae-caf3c6057662:
     name: 'News Description'
     handle: newsDescription
@@ -176,6 +145,26 @@ fields:
       validateRelatedElements: ''
     contentColumnType: string
     fieldGroup: 70f64b48-8b55-4750-bca7-5656ba7dbda4
+  aeed936f-1de9-45b5-90da-bb9c904df1d7:
+    name: 'Receives Communications'
+    handle: receivesCommunications
+    instructions: 'Should this user receive email and / or texting communications?'
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\RadioButtons
+    settings:
+      options:
+        -
+          label: 'Yes'
+          value: 'yes'
+          default: '1'
+        -
+          label: 'No'
+          value: 'no'
+          default: ''
+    contentColumnType: string
+    fieldGroup: 7a701a6e-72c8-4d5b-ac96-2830c462a6ea
   b7323f15-0b6c-493e-8174-d85f69a61edd:
     name: 'Product Name'
     handle: productName
@@ -210,23 +199,6 @@ fields:
       columnType: text
     contentColumnType: text
     fieldGroup: a3e62c01-c6b9-47f6-9904-6db8c24f0b71
-  cfa2e5f0-3a12-438e-9cde-6d040f2cb87a:
-    name: 'Last Name'
-    handle: lastName
-    instructions: ''
-    searchable: true
-    translationMethod: none
-    translationKeyFormat: null
-    type: craft\fields\PlainText
-    settings:
-      placeholder: ''
-      code: ''
-      multiline: ''
-      initialRows: '4'
-      charLimit: ''
-      columnType: text
-    contentColumnType: text
-    fieldGroup: 7a701a6e-72c8-4d5b-ac96-2830c462a6ea
   dc21e978-d52e-49fd-8089-5d3c46a77d69:
     name: 'Product Image'
     handle: productImage
@@ -237,9 +209,9 @@ fields:
     type: craft\fields\Assets
     settings:
       useSingleFolder: ''
-      defaultUploadLocationSource: ''
+      defaultUploadLocationSource: 'volume:2256ac43-7ed6-4bba-9f4c-1a6a50b5ad7b'
       defaultUploadLocationSubpath: ''
-      singleUploadLocationSource: ''
+      singleUploadLocationSource: 'volume:2256ac43-7ed6-4bba-9f4c-1a6a50b5ad7b'
       singleUploadLocationSubpath: ''
       restrictFiles: ''
       allowedKinds: null
@@ -253,6 +225,23 @@ fields:
       validateRelatedElements: ''
     contentColumnType: string
     fieldGroup: 4b000de0-c332-4c52-806f-0b6adf2a6140
+  f4e9d54b-1ebc-4d91-8832-5c6934576d62:
+    name: 'Phone number'
+    handle: phoneNumber
+    instructions: 'Used for texting. Please include country code e.g. 64273504253'
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 7a701a6e-72c8-4d5b-ac96-2830c462a6ea
 matrixBlockTypes:
   14ed5bdb-4241-477f-9e04-f101c7a5d12e:
     name: News
@@ -677,7 +666,7 @@ siteGroups:
 sites:
   1d897520-a9e2-4981-beda-4254507df91e:
     siteGroup: c9424660-0760-48b0-b613-2c3499cf4ff8
-    name: 'Awatoru App'
+    name: 'Awatoru Wildfood'
     handle: default
     language: en-NZ
     hasUrls: true
@@ -687,8 +676,8 @@ sites:
 system:
   edition: pro
   live: true
-  name: 'Craft3 Jir6 Frb - Awatoru'
-  timeZone: America/Los_Angeles
+  name: 'Awatoru Wildfood'
+  timeZone: Pacific/Auckland
   schemaVersion: 3.3.3
 users:
   requireEmailVerification: true
@@ -697,22 +686,40 @@ users:
   photoVolumeUid: null
   photoSubpath: null
   fieldLayouts:
-    ac1b6471-20fc-4144-bd87-acdae5219a90:
+    34dd6a75-9846-417c-aa9b-29bc754db32b:
       tabs:
         -
-          name: Users
+          name: 'Further details'
           sortOrder: 1
           fields:
-            23d11b87-2fe8-43aa-bdcd-4bf76b0c0719:
+            aeed936f-1de9-45b5-90da-bb9c904df1d7:
               required: false
-              sortOrder: 1
-            5102df7b-e447-4874-9c46-d4cb75c13b7c:
-              required: false
-              sortOrder: 2
-            cfa2e5f0-3a12-438e-9cde-6d040f2cb87a:
+              sortOrder: 4
+            f4e9d54b-1ebc-4d91-8832-5c6934576d62:
               required: false
               sortOrder: 3
   groups:
     2bc2f604-a7fc-4567-b7db-bed1568be1c3:
-      name: 'Restaurants '
-      handle: restaurants
+      name: Chefs
+      handle: chefs
+volumes:
+  2256ac43-7ed6-4bba-9f4c-1a6a50b5ad7b:
+    name: 'Amazon S3'
+    handle: amazonS3
+    type: craft\awss3\Volume
+    hasUrls: true
+    url: 'https://s3.ap-southeast-2.amazonaws.com/awatoru-wildfood/'
+    settings:
+      subfolder: ''
+      keyId: AKIAJ32K6LTZLKT7V4LA
+      secret: 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
+      bucketSelectionMode: choose
+      bucket: awatoru-wildfood
+      region: ap-southeast-2
+      expires: ''
+      makeUploadsPublic: '1'
+      storageClass: ''
+      cfDistributionId: ''
+      cfPrefix: ''
+      autoFocalPoint: ''
+    sortOrder: 1
